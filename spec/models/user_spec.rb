@@ -7,7 +7,7 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_presence_of(:gender) }
     it { is_expected.to validate_numericality_of(:last_latitude).is_less_than_or_equal_to(90.0) }
     it { is_expected.to validate_numericality_of(:last_latitude).is_greater_than_or_equal_to(0.0) }
-    it { is_expected.to validate_numericality_of(:last_longitude).is_less_than_or_equal_to(90.0) }
+    it { is_expected.to validate_numericality_of(:last_longitude).is_less_than_or_equal_to(180.0) }
     it { is_expected.to validate_numericality_of(:last_longitude).is_greater_than_or_equal_to(0.0) }
   end
 
