@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   # root "articles#index
   namespace :api do
     namespace :v1 do
-      resources :users, except: :destroy
+      resources :users, except: :destroy do
+        resource :inventories, only: :update
+      end
     end
   end
 end
