@@ -16,7 +16,7 @@ RSpec.describe User, type: :model do
     it { should define_enum_for(:gender).with_values(%w[male female transgender questioning not_applicable]) }
   end
 
-  # describe 'relationships' do
-  #   it { is_expected.to have_many(:inventory_items) }
-  # end
+  describe 'relationships' do
+    it { is_expected.to have_many(:inventories) }
+  end
 end
