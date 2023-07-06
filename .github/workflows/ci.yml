@@ -3,7 +3,6 @@ on: push
 jobs:
   rspec:
     name: RSpec
-    needs: rubocop
     runs-on: ubuntu-20.04
     env:
       RAILS_ENV: test
