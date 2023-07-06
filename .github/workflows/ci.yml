@@ -45,12 +45,7 @@ jobs:
       - name: Create database
         run: |
           bundle exec rails db:create
-          # Se o projeto usar `schema.rb`
           bundle exec rails db:schema:load
-          # Se o projeto usar `structure.sql`
-          bundle exec rails db:structure:load
-          # Se o projeto não usar nenhum dos dois
-          bundle exec rails db:migrate
 
       - name: Run tests
         run: bundle exec rspec spec
