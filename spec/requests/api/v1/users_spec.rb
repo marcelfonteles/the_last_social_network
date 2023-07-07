@@ -30,14 +30,26 @@ RSpec.describe "Api::V1::Users", type: :request do
 
   describe "GET /api/v1/users/:id" do
     let (:user) { create(:user) }
+    let(:inventory_1) { create(:inventory, user: user, item: 'water') }
+    let(:inventory_2) { create(:inventory, user: user, item: 'food') }
+    let(:inventory_3) { create(:inventory, user: user, item: 'medicine') }
+    let(:inventory_4) { create(:inventory, user: user, item: 'ammo') }
+
 
     it 'returns user' do
+      user.reload
+      inventory_1.reload
+      inventory_2.reload
+      inventory_3.reload
+      inventory_4.reload
+
       get "/api/v1/users/#{user.id}"
 
       res = JSON.parse(response.body).deep_symbolize_keys!
 
       expect(response).to have_http_status(:ok)
       expect(res[:id]).to eq(user.id)
+      expect(res[:inventories].size).to eq(4)
     end
 
     it 'returns an error' do
