@@ -22,8 +22,11 @@ module Users
     def create_user_inventory
       return if context.failure?
 
+      context.inventories = []
+
       Inventory.items.keys.each do |item|
-        Inventory.create(item:, user: context.user, quantity: 0)
+        inventory = Inventory.create(item:, user: context.user, quantity: 0)
+        context.inventories << inventory
       end
     end
   end
