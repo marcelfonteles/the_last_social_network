@@ -13,11 +13,11 @@ module Api
       end
 
       def create
-        user = User.new(user_params)
-        if user.save
-          render json: user, status: :ok
+        service = Users::Creator.call(params: user_params)
+        if service.success?
+          render json: service.user, status: :ok
         else
-          render json: user.errors, status: :unprocessable_entity
+          render json: service.user.errors, status: :unprocessable_entity
         end
       end
 
