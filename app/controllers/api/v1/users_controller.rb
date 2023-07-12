@@ -9,7 +9,8 @@ module Api
       end
 
       def show
-        render json: @user, status: :ok
+        service = Users::Fetcher.call(user: @user)
+        render json: service.user, status: :ok
       end
 
       def create
