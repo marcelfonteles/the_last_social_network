@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_06_223923) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_12_211332) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,6 +32,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_06_223923) do
     t.decimal "last_longitude", precision: 15, scale: 10
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "infected", default: false, null: false
+    t.integer "warning_count", default: 0, null: false
   end
 
 end
