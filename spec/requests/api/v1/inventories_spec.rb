@@ -58,5 +58,33 @@ RSpec.describe "Api::V1::Inventories", type: :request do
         expect(res[:quantity]).to eq(['must be greater than or equal to 0'])
       end
     end
+
+    context 'when user is infected' do
+      let(:user) { create(:user, warning_count: 4, infected: true) }
+      let(:inventory_1) { create(:inventory, user: user, item: 'water') }
+      let(:inventory_2) { create(:inventory, user: user, item: 'food') }
+      let(:inventory_3) { create(:inventory, user: user, item: 'medicine') }
+      let(:inventory_4) { create(:inventory, user: user, item: 'ammo') }
+
+      it 'should NOT update inventory' do
+        user.reload
+        inventory_1.reload
+
+        params = {
+          inventory: {
+            user_id: user.id,
+            item: 'water',
+            quantity: 12
+          }
+        }
+
+        put("/api/v1/users/#{user.id}/inventories", params:)
+
+        res = JSON.parse(response.body).deep_symbolize_keys
+
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(res[:message]).to eq('User infected! Cant change his inventory.')
+      end
+    end
   end
 end
