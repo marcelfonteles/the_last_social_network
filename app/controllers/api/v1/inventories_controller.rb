@@ -2,6 +2,7 @@ module Api
   module V1
     class InventoriesController < ApplicationController
       before_action :find_user
+      before_action :block_when_infected
       before_action :find_inventory
 
       def update
@@ -34,6 +35,12 @@ module Api
 
       def inventory_params
         params.require(:inventory).permit(:item, :quantity)
+      end
+
+      def block_when_infected
+        if @user.warning_count >= 3
+          render json: { message: 'User infected! Cant change his inventory.' }, status: :unprocessable_entity
+        end
       end
     end
   end
