@@ -1,24 +1,138 @@
-# README
+# The last Social Nertowk
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+No mundo dominado por zombies, esta será a última rede social existente.
+---
 
-Things you may want to cover:
+## Versões
+- Ruby: 3.2.2
+- Rails: 7.0.6
+- PostgreSQL: 13.4
 
-* Ruby version
+## Para executar todos os testes
 
-* System dependencies
+```shell
+rspec
+```
 
-* Configuration
+## Para executar alguns os testes
 
-* Database creation
+```shell
+rspec path/of/file
+```
 
-* Database initialization
+## Para executar utilizando o Docker
 
-* How to run the test suite
+```
+docker-compose up
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+### Populando o banco usando o Docker
+```shell
+docker exec -it the_last_social_network-web-1 /bin/bash
+```
 
-* Deployment instructions
+E depois
 
-* ...
+```shell
+rails db:seed
+```
+
+## Para executar utilizando SEM Docker
+
+1. Necessário ter instalado as versões corretas do Ruby, 
+Ruby on Raisl e do PostgreSQL localmente.
+2. Criar, migrar e popular o banco de dados
+  ```
+  rails db:create db:migrate db:seed
+  ```
+3. Inciar o servidor
+  ```
+  rails s
+  ```
+
+
+## Aqui está o texto do desafio completo para servir de referência
+### ZSSN (Zombie Survival Social Network)
+
+### Descrição do Problema
+
+O mundo finalmente atingiu o seu estado apocalíptico, onde uma pandemia causada por um virus de laboratório transforma seres humanos e animais em zumbis, seres sedentos por carne.
+
+Você, como membro da resistência (e último sobrevivente com conhecimentos em desenvolvimento de software) foi incubido à desenvolver um sistema para compartilhamento de recursos entre os humanos não infectados.
+
+### Funcionalidades
+
+O sistema consiste em uma ***API REST***, que irá armazenar informações sobre os sobreviventes, bem como os recursos que cada um detem.
+
+Para isso, o sistema deverá contar com as seguintes funcionalidades:
+
+- **Cadastrar usuários na base**:
+
+  Um usuário é definido basicamente por seu *nome*, *idade*, *sexo* e *última localização (latitude, longitude)*.
+
+  Ao ser criado, um usuário irá conter um inventário de itens que o mesmo detem (inicialmente vazio).
+
+  Os itens aceitos são: **água**, **comida**, **medicamento** e **munição**.
+
+- **Atualizar localização de usuário**:
+
+  Um usuário deve ser capaz de atualizar sua última localização, informando a nova latitude/longitude.
+
+- **Marcar usuário como infectado**:
+
+  Em uma situação caótica como essa, é inevitável que um usuário do sistema venha a ser contaminado.
+
+  Nesse caso, o mesmo deve ser atualizado no sistema como infectado.
+
+  Um usuário infectado não pode realizar escambo, não pode manipular seu inventário nem ser listado nos relatórios (para fins práticos, o mesmo está inativo).
+
+  **Um usuário é considerado infectado quando ao menos 3 outros usuários distintos do sistema reportaram sua contaminação**.
+
+  Ao ser infectado, todos os itens do inventário do usuário ficam **inacessíveis**.
+
+- **Adicionar/Remover itens do inventário de um usuário**:
+
+  Um usuário poderá adicionar/remover itens de seu inventário.
+
+  Os possíveis itens estão descritos na primeira opção acima;
+
+- **Escambo de bens**:
+
+  Usuários do sistema podem trocar bens entre si.
+
+  Para isso, a tabela de equivalência abaixo será utilizada.
+
+  Todos os escambos devem conter saldo final zero, ou seja, os dois usuários devem negociar a mesma quantidade de pontos.
+
+  Não é necessário realizar o registro do escambo, apenas transferir os itens entre os dois usuários.
+
+| Item      | Pontos   |
+|-----------|----------|
+| 1 Água    | 4 pontos |
+| 1 Comida  | 3 pontos |
+| 1 Remédio | 2 pontos |
+| 1 Munição | 1 ponto  |
+
+- **Relatórios**:
+
+  Para fins de consulta, os seguintes relatórios devem estar disponíveis no sistema:
+    1. Porcentagem de usuários infectados;
+    2. Porcentagem de usuários não-infectados;
+    3. Quantidade média de cada tipo de item por usuário (águas/usuário, comidas/usuário, etc);
+    4. Número de pontos perdidos por usuários infectados;
+
+### Orientações técnicas:
+
+1. Desenvolva a solução utilizando Ruby on Rails (CÓDIGO-FONTE TODO EM INGLÊS);
+2. Utilize um banco de dados relacional (PostgreSql ou MySql);
+3. Sistema REST, respondendo aos verbos HTTP (POST, GET, UPDATE, etc). A definição das rotas e verbos utilizados fica a seu critério, entretanto procure manter os *standards* e *best practices*;
+4. Toda a comunicação é feita via JSON;
+5. Não é necessário autenticação (afinal, quem vai perder tempo hackeando o sistema com um bando de zumbis na cola?! :P );
+6. Como o número de sobreviventes é baixo, o tráfego no sistema não será alto;
+
+### Dicas:
+
+1. **Documente** todo o seu sistema, desde como fazer o *setup* e rodar os testes, até as rotas criadas, exemplos de chamadas à *API* e as decisões arquiteturais;
+2. **Testes, testes e testes!** Num apocalipse zumbi, ninguém tem tempo a perder fazendo testes manuais, então automatize ao máximo sua suite;
+3. **Utilize Git**, com commits pequenos e bem descritos (nada de um commit único com todo o código);
+
