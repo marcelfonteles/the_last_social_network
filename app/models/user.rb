@@ -11,4 +11,26 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :inventories
 
   enum gender: %w[male female transgender questioning not_applicable]
+
+  def amount_of(item)
+    raise ActiveRecord::RecordNotFound unless Inventory.items.keys.include? item.to_s
+
+    inventories.find_by(item:)
+  end
+
+  def amount_of_water
+    amount_of('water')
+  end
+
+  def amount_of_food
+    amount_of('food')
+  end
+
+  def amount_of_medicine
+    amount_of('medicine')
+  end
+
+  def amount_of_ammo
+    amount_of('ammo')
+  end
 end
