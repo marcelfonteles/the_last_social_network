@@ -22,8 +22,13 @@ module Trades
     private
 
     def validate_transaction
+      has_user_infected
       validate_points
       validate_inventories
+    end
+
+    def has_user_infected
+      context.fail!(message: 'User infected') if user_1.infected || user_2.infected
     end
 
     def validate_inventories
