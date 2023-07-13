@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       end
 
       resource :trades, only: :create
+      resources :reports, only: :index
     end
   end
 end
