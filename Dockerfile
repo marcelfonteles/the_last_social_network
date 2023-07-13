@@ -19,4 +19,4 @@ COPY . /app
 
 FROM step as app
 
-EXPOSE 3001
+EXPOSE 3000
