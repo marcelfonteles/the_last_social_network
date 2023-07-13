@@ -28,7 +28,7 @@ module Trades
 
     def validate_inventories
       inventory_1.each do |inventory_item|
-        trade_quantity = user_trader_1['send'][inventory_item.item.to_s]
+        trade_quantity = user_trader_1['send'][inventory_item.item.to_s].to_i
 
         next if trade_quantity.nil?
 
@@ -39,7 +39,7 @@ module Trades
       end
 
       inventory_2.each do |inventory_item|
-        trade_quantity = user_trader_2['send'][inventory_item.item.to_s]
+        trade_quantity = user_trader_2['send'][inventory_item.item.to_s].to_i
 
         next if trade_quantity.nil?
 
