@@ -7,6 +7,8 @@ Rails.application.routes.draw do
         resource :inventories, only: :update
         resource :infected_users, path: 'infected', only: :update
       end
+
+      resource :trades, only: :create
     end
   end
 end
