@@ -7,6 +7,7 @@ No mundo dominado por zombies, esta será a última rede social existente.
 
 - [Versões utilizadas](#versoes)
 - [Executando os testes](#para-executar-todos-os-testes)
+- [Executando os testes com Docker](#para-executar-todos-os-testes)
 - [Executando alguns testes](#para-executar-alguns-dos-testes)
 - [Executando a API com Docker](#para-executar-a-api-utilizando-o-docker)
   - [Populando o banco com Docker](#populando-o-banco-usando-o-docker)
@@ -24,6 +25,20 @@ No mundo dominado por zombies, esta será a última rede social existente.
 
 ```shell
 rspec
+```
+
+## Para executar todos os testes com Docker
+Obs: Para rodar os testes com o Docker é necessário antes ter configurado o banco.
+Ver tópico [Executando a API com Docker](#para-executar-a-api-utilizando-o-docker).
+
+Adiciona permissão para executar o arquivo
+```shell
+chmod +x ./bin/tests
+```
+
+Executar os testes
+```shell
+./bin/tests
 ```
 
 ## Para executar alguns dos testes
