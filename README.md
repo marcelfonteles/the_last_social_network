@@ -12,6 +12,7 @@ No mundo dominado por zombies, esta será a última rede social existente.
 - [Executando a API com Docker](#para-executar-a-api-utilizando-o-docker)
   - [Populando o banco com Docker](#populando-o-banco-usando-o-docker)
 - [Executando a API sem Docker](#para-executar-a-api-sem-utilizar-o-docker)
+- [Todas as requisições com Insomnia (v4)](#insomnia)
 - [Descrição completa do desafio (para referência)](#description)
 ---
 
@@ -75,6 +76,12 @@ rails db:create db:migrate db:seed
 ```
 rails s
 ```
+<a id='insomnia'><a/>
+## Requesições com Insomnia
+Nesse repositório tem um arquivo do Insomnia (V4) com todas as rotas
+da API. Basta importar o arquivos `tlsn-requets.json` e poderá fazer os testes de todas
+as rotas.
+
 
 
 ## Aqui está o texto do desafio completo para servir de referência
