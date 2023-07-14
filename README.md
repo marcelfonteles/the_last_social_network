@@ -3,6 +3,18 @@
 No mundo dominado por zombies, esta será a última rede social existente.
 ---
 
+## Sumário
+
+- [Versões utilizadas](#versoes)
+- [Executando os testes](#para-executar-todos-os-testes)
+- [Executando alguns testes](#para-executar-alguns-dos-testes)
+- [Executando a API com Docker](#para-executar-a-api-utilizando-o-docker)
+  - [Populando o banco com Docker](#populando-o-banco-usando-o-docker)
+- [Executando a API sem Docker](#para-executar-a-api-sem-utilizar-o-docker)
+- [Descrição completa do desafio (para referência)](#description)
+---
+
+<a id="versoes"></a>
 ## Versões
 - Ruby: 3.2.2
 - Rails: 7.0.6
@@ -14,18 +26,17 @@ No mundo dominado por zombies, esta será a última rede social existente.
 rspec
 ```
 
-## Para executar alguns os testes
+## Para executar alguns dos testes
 
 ```shell
 rspec path/of/file
 ```
 
-## Para executar utilizando o Docker
+## Para executar a API utilizando o Docker
 
 ```
 docker-compose up
 ```
-
 ### Populando o banco usando o Docker
 ```shell
 docker exec -it the_last_social_network-web-1 /bin/bash
@@ -34,26 +45,27 @@ docker exec -it the_last_social_network-web-1 /bin/bash
 E depois
 
 ```shell
-rails db:seed
+rails db:create db:migrate db:seed
 ```
 
-## Para executar utilizando SEM Docker
+## Para executar a API SEM utilizar o Docker
 
 1. Necessário ter instalado as versões corretas do Ruby, 
-Ruby on Raisl e do PostgreSQL localmente.
+Ruby on Rails e do PostgreSQL localmente.
 2. Criar, migrar e popular o banco de dados
-  ```
-  rails db:create db:migrate db:seed
-  ```
+```shell
+rails db:create db:migrate db:seed
+```
 3. Inciar o servidor
-  ```
-  rails s
-  ```
+```
+rails s
+```
 
 
 ## Aqui está o texto do desafio completo para servir de referência
 ### ZSSN (Zombie Survival Social Network)
 
+<a id="description"><a/>
 ### Descrição do Problema
 
 O mundo finalmente atingiu o seu estado apocalíptico, onde uma pandemia causada por um virus de laboratório transforma seres humanos e animais em zumbis, seres sedentos por carne.
