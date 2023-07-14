@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+ENV_FILE=.env.test docker-compose run web rspec $*
+ENV_FILE=.env.test docker-compose down
