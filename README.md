@@ -76,6 +76,12 @@ rails db:create db:migrate db:seed
 rails s
 ```
 
+## Requesições com Insomnia
+Nesse repositório tem um arquivo do Insomnia (V4) com todas as rotas
+da API. Basta importar o arquivos `tlsn-requets.json` e poderá fazer os testes de todas
+as rotas.
+
+
 
 ## Aqui está o texto do desafio completo para servir de referência
 ### ZSSN (Zombie Survival Social Network)
